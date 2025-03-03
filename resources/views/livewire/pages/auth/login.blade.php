@@ -14,19 +14,6 @@ new #[Layout('layouts.app')] class extends Component
      */
     public function login(): void
     {
-
-        \App\Models\User::create([
-            'email' => 'admin@test.fr',
-            'password' => \Illuminate\Support\Facades\Hash::make('azertyU1@'),
-            'admin'
-        ]);
-
-        
-
-
-
-
-
         $this->validate();
 
         $this->form->authenticate();
