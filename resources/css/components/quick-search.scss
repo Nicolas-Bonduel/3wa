@@ -1,0 +1,108 @@
+.quick-search {
+
+    @media (min-width: 900px) {
+        position: relative;
+    }
+
+    .input {
+        display: flex;
+        align-items: center;
+        background-color: var(--secondary-bg-color);
+
+        input {
+            width: 100%;
+            border: none;
+            background-color: inherit;
+            outline: none;
+            box-shadow: none;
+            padding: 12px 24px;
+        }
+
+        svg {
+            margin-right: 1rem;
+        }
+    }
+
+    .result {
+        visibility: hidden;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        max-height: 400px;
+        overflow-y: auto;
+        z-index: 99;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        flex-direction: column;
+        background-color: var(--primary-bg-color);
+
+        &.visible {
+            visibility: visible;
+        }
+
+        & > .row {
+            padding: .5rem;
+            border-bottom: 1px solid #ccc;
+            display: flex;
+            gap: 30px;
+            transition: background-color ease .1s;
+
+            &:hover {
+                background-color: rgba(0,0,0,.15);
+            }
+
+            .product-thumbnail {
+                height: 90px;
+            }
+
+            .product-content {
+                display: flex;
+                flex-direction: column;
+
+                .product-name {
+                    text-transform: capitalize;
+                }
+
+                .product-description {
+                    max-width: 150px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    padding-bottom: 8px;
+
+                    @media (min-width: 400px) {
+                        max-width: 250px;
+                    }
+                    @media (min-width: 500px) {
+                        max-width: 350px;
+                    }
+                    @media (min-width: 600px) {
+                        max-width: 450px;
+                    }
+                    @media (min-width: 700px) {
+                        max-width: 550px;
+                    }
+                    @media (min-width: 800px) {
+                        max-width: 650px;
+                    }
+                    @media (min-width: 900px) {
+                        max-width: 200px;
+                    }
+                    @media (min-width: 1000px) {
+                        max-width: 250px;
+                    }
+                    @media (min-width: 1150px) {
+                        max-width: 350px;
+                    }
+                }
+
+                .product-price {
+                    color: var(--primary-color);
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+
+}

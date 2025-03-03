@@ -1,0 +1,50 @@
+#footer {
+    container-name: footer;
+    container-type: inline-size;
+
+    & > .content {
+        width: 100%;
+        padding: 1rem 1rem;
+        background-color: #E8ECEA;
+        display: flex;
+        flex-direction: column;
+        color: rgb(85,85,85);
+
+        @container footer (min-width: 900px) {
+            flex-direction: row;
+            justify-content: space-evenly;
+
+            section {
+                width: 22%;
+            }
+        }
+    }
+
+    & > .copyright {
+        width: 100%;
+        padding: 2rem 1rem;
+        color: #808080;
+        background-color: var(--primary-bg-color);
+        display: flex;
+        justify-content: center;
+    }
+
+    section {
+        margin-bottom: 2rem;
+    }
+
+    ul {
+        list-style: inside;
+    }
+
+    p {
+        text-align: justify;
+    }
+
+    .uppercase {
+        text-transform: uppercase;
+        font-weight: 600;
+        color: #808080;
+    }
+
+}

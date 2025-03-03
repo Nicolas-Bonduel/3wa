@@ -1,0 +1,39 @@
+#register-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--primary-bg-color);
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    width: calc(100% - 3rem);
+    max-width: 500px;
+
+    .header {
+        width: calc(100% - 3rem);
+        text-align: center;
+        color: var(--primary-color);
+        font-weight: bold;
+        padding: 1rem;
+        border-bottom: 2px solid #ccc;
+    }
+
+    .policy {
+        margin-top: .5rem;
+        margin-bottom: 1.5rem;
+
+        input[name=policy] {
+            --tw-ring-color: var(--primary-color);
+
+            &:checked {
+                background-color: var(--primary-color);
+            }
+        }
+    }
+}
+
+#register-form {
+    width: 100%;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
