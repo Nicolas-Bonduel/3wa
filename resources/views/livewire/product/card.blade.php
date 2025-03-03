@@ -1,11 +1,12 @@
-<a class="product-card" href="{{ route('public.product', $product->name) }}" wire:navigate>
+<div class="product-card" href="{{ route('public.product', $product->name) }}">
 
     @php
         $img_src = \Illuminate\Support\Facades\Storage::disk('public')->path('produit/' . $product->name . '/' . $product->name . '_1.jpg');
+        $rel_path = 'produit/' . $product->name . '/' . $product->name . '_1.jpg';
     @endphp
 
     <img class="thumbnail" alt="{{ $product->name }}"
-         src="{{ file_exists($img_src) ? $img_src : asset('img/placeholder.png') }}"/>
+         src="{{ file_exists($img_src) ? asset('storage/' . $rel_path) : asset('img/placeholder.png') }}"/>
 
     <span class="name">
         {{ htmlspecialchars_decode($product->name) }}
@@ -50,4 +51,4 @@
         Voir les détails
     </button>
 
-</a>
+</div>

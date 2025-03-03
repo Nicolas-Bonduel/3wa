@@ -15,7 +15,7 @@
                 @endphp
                 <div class="row">
 
-                    <img class="thumbnail" alt="{{ $cart_item['product']->name }}" src="{{ file_exists($img_src) ? $img_src : asset('img/placeholder.png') }}" width="92" height="92"/>
+                    <img class="thumbnail" alt="{{ $cart_item['product']->name }}" src="{{ file_exists($img_src) ? asset('storage/' . $img_src) : asset('img/placeholder.png') }}" width="92" height="92"/>
 
                     <div class="content">
                         <span class="fake-link name" data-href="{{ route('public.product', $cart_item['product']->name) }}">

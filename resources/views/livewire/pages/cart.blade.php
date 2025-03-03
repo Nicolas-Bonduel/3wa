@@ -49,11 +49,12 @@
                     @php
                         $product = $cart_item['product'];
                         $variation_name = \App\Services\Helper::get_variation_name($product->sku);
+                        $rel_path = 'produit/' . $product->name . '/' . $product->name . '_1.jpg';
                         $img_src = \Illuminate\Support\Facades\Storage::disk('public')->path('produit/' . $product->name . '/' . $product->name . '_1.jpg');
                     @endphp
                     <tr wire:key="{{ $product->id }}">
                         <td>
-                            <img class="thumbnail" alt="{{ $product->name }}" src="{{ file_exists($img_src) ? $img_src : asset('img/placeholder.png') }}" width="92" height="92"/>
+                            <img class="thumbnail" alt="{{ $product->name }}" src="{{ file_exists($img_src) ? asset('storage/' . $rel_path) : asset('img/placeholder.png') }}" width="92" height="92"/>
                         </td>
                         <td class="details">
                             <a href="{{ route('public.product', $product->name) }}" wire:navigate>
