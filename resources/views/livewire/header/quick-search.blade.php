@@ -19,7 +19,7 @@
                     $rel_path = 'produit/' . $product->name . '/' . $product->name . '_1.jpg';
                 @endphp
                 <a class="row" href="{{ route('public.product', $product->name) }}" wire:navigate>
-                    <img class="product-thumbnail" src="{{ file_exists($img_src) ? asset('storage/' . $rel_path) : asset('img/placeholder.png') }}" alt="{{ htmlspecialchars_decode($product->name) }}"/>
+                    <img class="product-thumbnail" src="{{ file_exists($img_src) ? asset('storage/' . $rel_path) : asset('img/placeholder.png') }}" alt="{{ htmlspecialchars_decode($product->name) }}" width="90" height="90"/>
                     <div class="product-content">
                     <span class="product-name">
                         {{ $product->name }}

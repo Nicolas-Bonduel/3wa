@@ -1,4 +1,4 @@
-<div class="product-card" href="{{ route('public.product', $product->name) }}">
+<a class="product-card" href="{{ route('public.product', $product->name) }}" wire:navigate>
 
     @php
         $img_src = \Illuminate\Support\Facades\Storage::disk('public')->path('produit/' . $product->name . '/' . $product->name . '_1.jpg');
@@ -51,4 +51,4 @@
         Voir les détails
     </button>
 
-</div>
+</a>
