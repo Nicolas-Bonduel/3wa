@@ -12,6 +12,8 @@ class Minicart extends Component
     public function remove(int $id)
     {
         Cart::remove($id);
+
+        $this->dispatch('cart-update');
     }
 
 

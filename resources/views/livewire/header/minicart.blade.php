@@ -12,10 +12,11 @@
             @foreach($cart_items as $cart_item)
                 @php
                     $img_src = \Illuminate\Support\Facades\Storage::disk('public')->path('produit/' . $cart_item['product']->name . '/' . $cart_item['product']->name . '_1.jpg');
+                    $rel_path = 'produit/' . $cart_item['product']->name . '/' . $cart_item['product']->name . '_1.jpg';
                 @endphp
                 <div class="row">
 
-                    <img class="thumbnail" alt="{{ $cart_item['product']->name }}" src="{{ file_exists($img_src) ? asset('storage/' . $img_src) : asset('img/placeholder.png') }}" width="92" height="92"/>
+                    <img class="thumbnail" alt="{{ $cart_item['product']->name }}" src="{{ file_exists($img_src) ? asset('storage/' . $rel_path) : asset('img/placeholder.png') }}" width="92" height="92"/>
 
                     <div class="content">
                         <span class="fake-link name" data-href="{{ route('public.product', $cart_item['product']->name) }}">
@@ -28,7 +29,7 @@
                             ( x{{ $cart_item['quantity'] }} )
                         </span>
                         <span class="variation">
-                            <small>( état : {{ \App\Services\Helper::get_variation_name($cart_item['product']->sku) }} )</small
+                            <small>( état : {{ \App\Services\Helper::get_variation_name($cart_item['product']->sku) }} )</small>
                         </span>
                     </div>
 

@@ -4,6 +4,7 @@ namespace App\Livewire\Product;
 
 use App\Models\ProductVariation;
 use App\Facades\Cart;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class AddToCart extends Component
@@ -12,6 +13,7 @@ class AddToCart extends Component
     public int $stock;
 
     public int $qty = 1;
+    public int $remaining_stock;
 
     public function mount(ProductVariation $product_variation, int $stock)
     {
@@ -40,8 +42,16 @@ class AddToCart extends Component
     }
 
 
+    #[On('cart-update')]
     public function render()
     {
+        $cart_items = Cart::content();
+        $product_in_cart = $cart_items->get($this->product_variation->id);
+        if ($product_in_cart)
+            $this->remaining_stock = $this->stock - $product_in_cart->get('quantity');
+        else
+            $this->remaining_stock = $this->stock;
+
         return view('livewire.product.add-to-cart');
     }
 }
