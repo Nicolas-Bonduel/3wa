@@ -1,12 +1,14 @@
 #header {
-    position: relative;
+    position: sticky;
+    top: 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    padding: 20px 0;
+    padding: 0 20px;
     background-color: var(--primary-bg-color);
     border-bottom: 1px solid #eee;
+    z-index: 999;
     @media (min-width: 900px) {
         margin-left: 1rem;
     }
@@ -149,58 +151,6 @@
         color: var(--secondary-color);
         margin-left: auto;
         margin-right: 1rem;
-    }
-
-    .hover-content {
-        position: absolute;
-        top: 100%;
-        right: 0;
-        min-width: 370px;
-        margin-top: 10px;
-        transform: translateY(20px);
-        transition: all .4s ease;
-        background-color: var(--primary-bg-color);
-        padding: 1rem;
-        border: 2px solid #ccc;
-        opacity: 0;
-        visibility: hidden;
-        z-index: 30;
-
-        &.left {
-            right: auto;
-            left: 0;
-
-            &:not(.no-arrow)::before {
-                left: 30px;
-                right: auto;
-            }
-        }
-
-        &:not(.no-arrow)::before {
-            background-color: var(--primary-bg-color);
-            border-left: 1px solid #e1e1e1;
-            border-top: 1px solid #e1e1e1;
-            content: "";
-            display: inline-block;
-            height: 16px;
-            position: absolute;
-            right: 30px;
-            top: -8px;
-            transform: rotate(45deg);
-            transform-origin: 50% 50%;
-            width: 16px;
-        }
-    }
-    *:hover > .hover-content {
-        transform: translate(0);
-        opacity: 1;
-        visibility: visible;
-    }
-    // debug
-    .hover-content.visible {
-        transform: translate(0);
-        opacity: 1;
-        visibility: visible;
     }
 
     .minicart {

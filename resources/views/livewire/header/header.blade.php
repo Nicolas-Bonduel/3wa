@@ -2,6 +2,7 @@
 
     @vite(['resources/css/header.scss', 'resources/js/header.js'])
 
+
     {{-- Mobile Menu --}}
     <livewire:header.mobile-menu />
 

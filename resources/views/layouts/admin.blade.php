@@ -7,14 +7,22 @@
 
             <title>Admin</title>
 
-            @vite(['resources/css/app.scss', 'resources/js/app.js', 'resources/css/loader.scss'])
+            @vite(['resources/css/app.scss', 'resources/js/app.js', 'resources/css/admin.scss'])
         </head>
-        <body>
+        <body id="admin">
 
-            <main class="flex flex-col items-center">
-                {{ $slot }}
+            <livewire:admin.header />
+
+            <main>
+
+                <livewire:admin.sidebar />
+
+                <div id="content-wrapper">
+                    {{ $slot }}
+                </div>
+
             </main>
 
-    </body>
+        </body>
 </html>
 

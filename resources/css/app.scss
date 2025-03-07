@@ -99,3 +99,93 @@ input[type=checkbox][id^=dropdown-input] {
         transition: max-height 1s ease-in-out;
     }
 }
+
+.hover-content {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    min-width: 370px;
+    margin-top: 10px;
+    transform: translateY(20px);
+    transition: all .4s ease;
+    background-color: var(--primary-bg-color);
+    padding: 1rem;
+    border: 2px solid #ccc;
+    opacity: 0;
+    visibility: hidden;
+    white-space: nowrap;
+    z-index: 30;
+
+    &:not(.no-arrow)::before {
+        background-color: var(--primary-bg-color);
+        border-left: 1px solid #e1e1e1;
+        border-top: 1px solid #e1e1e1;
+        content: "";
+        display: inline-block;
+        height: 16px;
+        position: absolute;
+        right: 30px;
+        top: -8px;
+        transform: rotate(45deg);
+        transform-origin: 50% 50%;
+        width: 16px;
+    }
+
+    &.black {
+        background-color: black;
+
+        &:not(.no-arrow)::before {
+            background-color: black;
+            border-color: black;
+        }
+    }
+    &.left {
+        right: auto;
+        left: 0;
+
+        &:not(.no-arrow)::before {
+            left: 30px;
+            right: auto;
+        }
+    }
+    &.top {
+        top: auto;
+        bottom: 0;
+        margin-bottom: calc(100% + 5px);
+
+        &:not(.no-arrow)::before {
+            top: auto;
+            bottom: -8px;
+        }
+    }
+    &.auto {
+        width: auto;
+        min-width:auto;
+    }
+    &.center {
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+
+        &:not(.no-arrow)::before {
+            right: auto;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+        }
+    }
+    &.small {
+        padding: .4rem .8rem;
+    }
+    &.rounded {
+        border-radius: 10px;
+    }
+}
+*:hover > .hover-content, /* debug --> */ .hover-content.visible /* <-- debug */ {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+
+    &.center {
+        transform: translateY(0) translateX(-50%);
+    }
+}

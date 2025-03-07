@@ -46,6 +46,30 @@ Route::middleware([\App\Http\Middleware\AdminMiddleware::class])->prefix('/admin
     Route::get('/', \App\Livewire\Admin\Dashboard::class)
         ->name('dashboard');
 
+    Route::get('/pages', \App\Livewire\Admin\Pages::class)
+        ->name('pages');
+
+    Route::get('/blog', \App\Livewire\Admin\Blog::class)
+        ->name('blog');
+
+    Route::get('/ecommerce', \App\Livewire\Admin\Ecommerce::class)
+        ->name('ecommerce');
+
+    Route::get('/media', \App\Livewire\Admin\Media::class)
+        ->name('media');
+
+    Route::get('/theme', \App\Livewire\Admin\Theme::class)
+        ->name('theme');
+
+    Route::get('/translations', \App\Livewire\Admin\Translations::class)
+        ->name('translations');
+
+    Route::get('/settings', \App\Livewire\Admin\Settings::class)
+        ->name('settings');
+
+    Route::get('/users', \App\Livewire\Admin\Users::class)
+        ->name('users');
+
 });
 
 

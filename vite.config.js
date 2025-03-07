@@ -22,6 +22,7 @@ export default defineConfig({
                 'resources/css/cart.scss',
                 'resources/css/products.scss',
                 'resources/css/footer.scss',
+                'resources/css/admin.scss',
             ],
             refresh: true,
         }),

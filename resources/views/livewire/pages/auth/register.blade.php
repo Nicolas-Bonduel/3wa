@@ -29,7 +29,7 @@ new #[Layout('layouts.app')] class extends Component
     public function rules(): array
     {
         return [
-            'email' => ['required', 'email', 'lowercase', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'email', 'lowercase', 'max:255', 'unique:'.Customer::class],
             'password' => ['required', 'min:6', 'regex:/[a-z]/', 'regex:/[A-Z]/', 'regex:/[0-9]/', 'regex:/[@$!%*#?&]/', 'confirmed'],
             'company' => ['required', 'string', 'min:2', 'max:255'],
             'country' => ['required', 'string', 'size:2'],
