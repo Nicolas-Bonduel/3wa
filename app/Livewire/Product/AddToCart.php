@@ -34,11 +34,12 @@ class AddToCart extends Component
 
     public function add_to_cart()
     {
-        if ($this->qty < 1 || $this->qty > $this->stock)
+        if ($this->qty < 1 || $this->qty > $this->remaining_stock)
             return;
 
         Cart::add($this->product_variation, $this->qty);
         $this->dispatch('cart-update');
+        $this->dispatch('notify', 'Produit ajouté au panier', 'success');
     }
 
 

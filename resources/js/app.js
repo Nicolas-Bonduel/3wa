@@ -14,3 +14,5 @@ document.addEventListener('livewire:navigated', () => {
     $fake_links.forEach(($el) => $el.addEventListener('click', onFakeLinkClick));
 
 });
+
+

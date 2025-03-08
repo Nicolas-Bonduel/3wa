@@ -23,6 +23,7 @@ export default defineConfig({
                 'resources/css/products.scss',
                 'resources/css/footer.scss',
                 'resources/css/admin.scss',
+                'resources/css/notifier.scss',
             ],
             refresh: true,
         }),

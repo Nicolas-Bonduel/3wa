@@ -14,6 +14,7 @@ class Cart extends Component
     {
         Cart_::remove($id);
         $this->dispatch('cart-update');
+        $this->dispatch('notify', 'Panier mis à jour', 'success');
     }
 
 

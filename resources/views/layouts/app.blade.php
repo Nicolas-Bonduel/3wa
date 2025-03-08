@@ -11,6 +11,8 @@
     </head>
     <body>
 
+        <livewire:notifier />
+
         <livewire:header.header />
 
         <main class="flex flex-col items-center">

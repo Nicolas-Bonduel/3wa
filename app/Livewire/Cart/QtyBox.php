@@ -31,6 +31,7 @@ class QtyBox extends Component
         $this->qty--;
         Cart::update($this->product->id, $this->qty);
         $this->dispatch('cart-update');
+        $this->dispatch('notify', 'Panier mis à jour ('.$this->qty.')', 'success');
     }
     public function increase()
     {
@@ -40,6 +41,7 @@ class QtyBox extends Component
         $this->qty++;
         Cart::update($this->product->id, $this->qty);
         $this->dispatch('cart-update');
+        $this->dispatch('notify', 'Panier mis à jour ('.$this->qty.')', 'success');
     }
 
 

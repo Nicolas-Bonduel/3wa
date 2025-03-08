@@ -11,6 +11,8 @@
         </head>
         <body id="admin">
 
+            <livewire:notifier />
+
             <livewire:admin.header />
 
             <main>
