@@ -125,4 +125,14 @@
             cursor: pointer;
         }
     }
+
+    .place-order {
+        margin-top: 2rem;
+        padding: 10px;
+
+        @media (min-width: 900px) {
+            align-self: end;
+            margin-right: 5rem;
+        }
+    }
 }

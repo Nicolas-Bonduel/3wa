@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('order_addresses', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('order_id');
+            $table->enum('type', ['billing', 'shipping']);
+            $table->string('name');
+            $table->char('country', 3);
+            $table->string('address');
+            $table->string('zip');
+            $table->string('city');
             $table->timestamps();
         });
     }

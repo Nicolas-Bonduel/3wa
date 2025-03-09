@@ -113,7 +113,7 @@ class Cart {
      *
      * @return string
      */
-    public function total(): string
+    public function total(bool $as_float = false): string|float
     {
         $content = $this->getContent();
 
@@ -121,7 +121,7 @@ class Cart {
             return $total += $item->get('price') * $item->get('quantity');
         });
 
-        return number_format($total, 2);
+        return $as_float ? $total : number_format($total, 2);
     }
 
     /**

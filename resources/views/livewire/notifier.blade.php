@@ -44,20 +44,24 @@
 
 @script
     <script>
-        let notifier_timeout = null;
-        window.addEventListener('hide-notify', (e) => {
-            if (notifier_timeout) {
-                clearTimeout(notifier_timeout);
-                $refs.this.style.animation = 'none';
-                $refs.this.offsetHeight; // trigger reflow
-                $refs.this.style.animation = '';
-            }
+        document.addEventListener('livewire:navigated', () => {
 
-            notifier_timeout = window.setTimeout(() => {
-                @this.set('message', '');
-                @this.set('type', '');
-                @this.set('show', false);
-            }, e.detail[0]);
+            let notifier_timeout = null;
+            window.addEventListener('hide-notify', (e) => {
+                if (notifier_timeout) {
+                    clearTimeout(notifier_timeout);
+                    $refs.this.style.animation = 'none';
+                    $refs.this.offsetHeight; // trigger reflow
+                    $refs.this.style.animation = '';
+                }
+
+                notifier_timeout = window.setTimeout(() => {
+                    @this.set('message', '');
+                    @this.set('type', '');
+                    @this.set('show', false);
+                }, e.detail[0]);
+            });
+
         });
     </script>
 @endscript

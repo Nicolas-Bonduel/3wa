@@ -3,11 +3,23 @@
 use App\Livewire\Forms\LoginForm;
 use Illuminate\Support\Facades\Session;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\On;
 use Livewire\Volt\Component;
 
 new #[Layout('layouts.app')] class extends Component
 {
     public LoginForm $form;
+
+    public ?string $previous_url = null;
+    public function mount()
+    {
+        $this->dispatch('get-previous-url');
+    }
+    #[On('set-previous-url')]
+    public function setPreviousUrl($previous_url)
+    {
+        $this->previous_url = $previous_url;
+    }
 
     /**
      * Handle an incoming authentication request.
@@ -20,7 +32,10 @@ new #[Layout('layouts.app')] class extends Component
 
         Session::regenerate();
 
-        $this->redirectIntended(default: route('customer.dashboard', absolute: false), navigate: true);
+        if ($this->previous_url == route('public.cart'))
+            $this->redirect(route('public.cart'), navigate: true);
+        else
+            $this->redirectIntended(default: route('customer.dashboard', absolute: false), navigate: true);
     }
 }; ?>
 

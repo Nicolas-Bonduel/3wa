@@ -27,17 +27,19 @@ Route::middleware(['auth:customer', 'verified'])->name('customer.')->group(funct
     Route::get('dashboard', \App\Livewire\Pages\Customer\Dashboard::class)
         ->name('dashboard');
 
-    Route::get('edit-account', \App\Livewire\Pages\Customer\Dashboard::class)
-        ->name('edit-account');
+    Route::prefix('/dashboard')->group(function () {
+        Route::get('edit-account', \App\Livewire\Pages\Customer\Dashboard::class)
+            ->name('edit-account');
 
-    Route::get('orders', \App\Livewire\Pages\Customer\Dashboard::class)
-        ->name('orders');
+        Route::get('orders', \App\Livewire\Pages\Customer\Dashboard::class)
+            ->name('orders');
 
-    Route::get('addresses', \App\Livewire\Pages\Customer\Dashboard::class)
-        ->name('addresses');
+        Route::get('addresses', \App\Livewire\Pages\Customer\Dashboard::class)
+            ->name('addresses');
 
-    Route::get('change-password', \App\Livewire\Pages\Customer\Dashboard::class)
-        ->name('change-password');
+        Route::get('change-password', \App\Livewire\Pages\Customer\Dashboard::class)
+            ->name('change-password');
+    });
 
 });
 

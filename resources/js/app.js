@@ -1,5 +1,16 @@
 import './bootstrap';
 
+
+let previous_url = null;
+document.addEventListener('livewire:navigate', () => {
+    previous_url = window.location.href;
+});
+document.addEventListener('livewire:initialized', () => {
+    Livewire.on('get-previous-url', () => {
+        Livewire.dispatch('set-previous-url', { previous_url: previous_url });
+    });
+});
+
 document.addEventListener('livewire:navigated', () => {
 
     const onFakeLinkClick = (e) => {
@@ -14,5 +25,4 @@ document.addEventListener('livewire:navigated', () => {
     $fake_links.forEach(($el) => $el.addEventListener('click', onFakeLinkClick));
 
 });
-
 

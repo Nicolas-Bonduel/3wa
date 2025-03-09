@@ -85,6 +85,10 @@
                 @endforeach
             </tbody>
         </table>
+
+        <button class="btn-primary place-order" wire:click="placeOrder">
+            Passer la commande
+        </button>
     @endif
 
 </div>

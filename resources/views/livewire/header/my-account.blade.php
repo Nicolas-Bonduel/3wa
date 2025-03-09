@@ -23,7 +23,7 @@
                 Déconnexion
             </a>
         @else
-            <a href="{{ route('register') }}" wire:navigate>
+            <a href="{{ route('login') }}" wire:navigate>
                 Connexion
             </a>
         @endif
