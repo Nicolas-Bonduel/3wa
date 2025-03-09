@@ -68,15 +68,15 @@
 
     <div class="content">
         @if(Route::is('customer.dashboard'))
-            1
+            Dashboard
         @elseif(Route::is('customer.edit-account'))
-            2
+            @dump(auth('customer')->user())
         @elseif(Route::is('customer.orders'))
-            3
+            @dump(auth('customer')->user()->orders()->getResults())
         @elseif(Route::is('customer.addresses'))
-            4
+            @dump(auth('customer')->user()->addresses()->getResults())
         @elseif(Route::is('customer.change-password'))
-            5
+            not yet
         @endif
     </div>
 

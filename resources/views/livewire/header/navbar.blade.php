@@ -32,12 +32,12 @@
             @endif
         </li>
         <li>
-            <a href="{{ route('public.home') }}" wire:navigate>
+            <a href="{{ route('public.about') }}" wire:navigate>
                 Qui sommes-nous ?
             </a>
         </li>
         <li>
-            <a href="{{ route('public.home') }}" wire:navigate>
+            <a href="{{ route('public.blog') }}" wire:navigate>
                 Blog
             </a>
         </li>

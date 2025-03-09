@@ -73,7 +73,7 @@ new #[Layout('layouts.app')] class extends Component
                             name="password"
                             autocomplete="current-password" />
 
-            <a href="{{ route('password.request') }}" style="position: absolute; right: 15px; bottom: 0; height: calc(100% - 1.5rem); display: flex; align-items: center;">
+            <a href="" style="position: absolute; right: 15px; bottom: 0; height: calc(100% - 1.5rem); display: flex; align-items: center;">
                 <span class="text-red">
                     Oublié ?
                 </span>

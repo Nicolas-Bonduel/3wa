@@ -1,5 +1,5 @@
 <div class="py-8">
 
-    homepage
+    Blog
 
 </div>

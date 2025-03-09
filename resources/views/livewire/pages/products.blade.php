@@ -1,9 +1,9 @@
-<div id="products-page">
+<div id="products-page" class="pt-4">
 
     @vite(['resources/css/products.scss'])
 
 
-    {{ $products->total() }}
+{{--    {{ $products->total() }}--}}
 
     <!-- Loader -->
     <div wire:loading>

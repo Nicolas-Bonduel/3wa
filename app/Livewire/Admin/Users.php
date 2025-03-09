@@ -12,10 +12,25 @@ class Users extends Component
 {
 
     public Collection $users;
+    public array $checks = [];
+    public bool $check_all = false;
     public array $edit_role_list = [];
 
     public array $active_role_edits = [];
 
+    public function updated($key, $value)
+    {
+        if ($key === 'check_all') {
+            $this->checks = ($value ?
+                $this->users->map(fn($user) => 'check-' . $user->id)->toArray()
+                :
+                []
+            );
+        }
+        elseif (str_starts_with($key, 'checks.')) {
+            $this->check_all = (count($this->checks) === count($this->users));
+        }
+    }
 
     public function toggleEditRole(int $user_id)
     {

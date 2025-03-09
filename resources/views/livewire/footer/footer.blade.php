@@ -18,17 +18,17 @@
             </span>
             <ul class="mb-3 pl-2">
                 <li>
-                    <a href="{{ route('public.home') }}" wire:navigate>
+                    <a href="{{ route('customer.dashboard') }}" wire:navigate>
                         Mon Compte
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('public.home') }}" wire:navigate>
+                    <a href="{{ route('public.recruitment') }}" wire:navigate>
                         Recrutement
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('public.home') }}" wire:navigate>
+                    <a href="{{ route('public.faq') }}" wire:navigate>
                         FAQ
                     </a>
                 </li>
@@ -50,22 +50,22 @@
             </span>
             <ul class="mb-3 pl-2">
                 <li>
-                    <a href="{{ route('public.home') }}" wire:navigate>
+                    <a href="{{ route('public.terms-of-sale') }}" wire:navigate>
                         Conditions Générales de Vente
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('public.home') }}" wire:navigate>
+                    <a href="{{ route('public.customer-service') }}" wire:navigate>
                         Service Après-Vente
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('public.home') }}" wire:navigate>
+                    <a href="{{ route('public.legal-notice') }}" wire:navigate>
                         Mentions légales
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('public.home') }}" wire:navigate>
+                    <a href="{{ route('public.privacy-policy') }}" wire:navigate>
                         Politique de protection des données personnelles
                     </a>
                 </li>

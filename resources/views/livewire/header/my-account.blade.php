@@ -10,10 +10,10 @@
             <a href="{{ route('customer.dashboard') }}" wire:navigate>
                 Mes informations
             </a>
-            <a href="{{ route('customer.dashboard') }}" wire:navigate>
+            <a href="{{ route('customer.orders') }}" wire:navigate>
                 Mes commandes
             </a>
-            <a href="{{ route('customer.dashboard') }}" wire:navigate>
+            <a href="{{ route('customer.addresses') }}" wire:navigate>
                 Carnet d'adresses
             </a>
             <a href="{{ route('customer.dashboard') }}" wire:navigate>

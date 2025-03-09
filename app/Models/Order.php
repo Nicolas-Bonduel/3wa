@@ -35,17 +35,17 @@ class Order extends Model
 
     public function customer(): HasOne
     {
-        return $this->hasOne(Customer::class);
+        return $this->hasOne(Customer::class, 'id', 'customer_id');
     }
 
     public function products(): HasMany
     {
-        return $this->hasMany(Order::class);
+        return $this->hasMany(OrderProduct::class);
     }
 
     public function addresses(): HasMany
     {
-        return $this->hasMany(CustomerAddress::class);
+        return $this->hasMany(OrderAddress::class);
     }
 
 }

@@ -3,10 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 
-//Route::view('profile', 'profile')
-//    ->middleware(['auth'])
-//    ->name('profile');
-
+/* --- Public --- */
 Route::name('public.')->group(function () {
 
     Route::get('/', \App\Livewire\Pages\Home::class)
@@ -20,8 +17,27 @@ Route::name('public.')->group(function () {
     Route::get('/cart', \App\Livewire\Pages\Cart::class)
         ->name('cart');
 
+    /* vv Empty for now vv */
+    Route::get('/about', \App\Livewire\Pages\Later\AboutUs::class)
+        ->name('about');
+    Route::get('/blog', \App\Livewire\Pages\Later\Blog::class)
+        ->name('blog');
+    Route::get('/customer-service', \App\Livewire\Pages\Later\CustomerService::class)
+        ->name('customer-service');
+    Route::get('/faq', \App\Livewire\Pages\Later\FAQ::class)
+        ->name('faq');
+    Route::get('/legal-notice', \App\Livewire\Pages\Later\LegalNotice::class)
+        ->name('legal-notice');
+    Route::get('/privacy-policy', \App\Livewire\Pages\Later\PrivacyPolicy::class)
+        ->name('privacy-policy');
+    Route::get('/recruitment', \App\Livewire\Pages\Later\Recruitment::class)
+        ->name('recruitment');
+    Route::get('/terms-of-sale', \App\Livewire\Pages\Later\TermsOfSale::class)
+        ->name('terms-of-sale');
+
 });
 
+/* --- Logged In (site) --- */
 Route::middleware(['auth:customer', 'verified'])->name('customer.')->group(function () {
 
     Route::get('dashboard', \App\Livewire\Pages\Customer\Dashboard::class)
@@ -43,6 +59,7 @@ Route::middleware(['auth:customer', 'verified'])->name('customer.')->group(funct
 
 });
 
+/* --- Logged In (back-office) --- */
 Route::middleware([\App\Http\Middleware\AdminMiddleware::class])->prefix('/admin')->name('admin.')->group(function () {
 
     Route::get('/', \App\Livewire\Admin\Dashboard::class)
@@ -74,7 +91,9 @@ Route::middleware([\App\Http\Middleware\AdminMiddleware::class])->prefix('/admin
 
 });
 
+/* --- 404 --- */
 
+Route::fallback(\App\Livewire\Error404::class);
 
 
 

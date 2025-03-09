@@ -113,8 +113,12 @@ input[type=checkbox][id^=dropdown-input] {
     border: 2px solid #ccc;
     opacity: 0;
     visibility: hidden;
-    white-space: nowrap;
+    //white-space: nowrap;
     z-index: 30;
+
+    &.nowrap {
+        white-space: nowrap;
+    }
 
     &:not(.no-arrow)::before {
         background-color: var(--primary-bg-color);

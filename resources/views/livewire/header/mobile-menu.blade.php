@@ -104,12 +104,12 @@
                 </li>
             @endif
             <li>
-                <a href="{{ route('public.home') }}" wire:navigate>
+                <a href="{{ route('public.about') }}" wire:navigate>
                     {{ __("Qui sommes-nous ?") }}
                 </a>
             </li>
             <li>
-                <a href="{{ route('public.home') }}" wire:navigate>
+                <a href="{{ route('public.blog') }}" wire:navigate>
                     {{ __("Blog") }}
                 </a>
             </li>
