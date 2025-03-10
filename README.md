@@ -1,66 +1,98 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# My Electronics
 
-## About Laravel
+Projet de validation du titre RNCP 37273 - formation développeur full-stack - 3W Academy
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Apercu
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Application de **site e-commerce** - SPA (Single Page Application) **Laravel 11** & **Livewire 3**.
 
-## Learning Laravel
+[démo en ligne](https://nicolas.dauba.net/)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Contexte
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Le contexte choisi pour cette application est celui d'une prestation fournie à une entreprise possédant un **ERP de gestion** de ses produits, commandes, clients, factures, etc.., il est donc question d'**importer et d'utiliser ces données dans l'application**
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Les données utilisées pour cette démo étant réelle, **elle ne sont pas fournies dans ce dépôt**. Installer ce projet en local à partir du dépôt est possible mais l'application de contiendra aucun produit.
 
-## Laravel Sponsors
+La [démo de l'application en ligne](https://nicolas.dauba.net/) contient toutes les données nécessaires.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Configuration Système Requise
 
-### Premium Partners
+- PHP >= 8.2
+- Laravel 11.x
+- Livewire 3.x
+- NodeJs
+- npm
+- composer
+- MySQL / MariaDB / InnoDB / PgSQL
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## Installation (local)
 
-## Contributing
+### 1. Cloner le dépôt git
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```bash
+git clone https://github.com/Nicolas-Bonduel/3wa.git
+cd 3wa
+```
 
-## Code of Conduct
+### 2. Installation dépendances php
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+composer install
+```
 
-## Security Vulnerabilities
+### 3. Installation dépendances Javascript & build
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+npm install
+npm run build
+```
 
-## License
+### 4. Variables d'environnement
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Copier le fichier `.env.example` vers `.env`:
+
+```bash
+cp .env.example .env
+```
+
+### 5. Générer la clé d'encryption
+
+```bash
+php artisan key:generate
+```
+
+### 6. Créer le lien symbolique vers `storage`
+
+```bash
+php artisan storage:link
+```
+
+### 7. Configurer la base de données
+
+Modifier dans le fichier `.env` :
+
+```ini
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=your_database
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+```
+
+Lancer les migrations :
+
+```bash
+php artisan migrate
+```
+
+### 8. Lancer le serveur de développement
+
+```bash
+php artisan serve
+```
+
+Par défaut, l'application sera accessible à l'adresse `http://127.0.0.1:8000`.
