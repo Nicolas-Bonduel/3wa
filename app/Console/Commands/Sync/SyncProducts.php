@@ -63,9 +63,6 @@ class SyncProducts extends Command
         ProductSubcategory::query()->truncate();
         ProductBrand::query()->truncate();
         ProductRange::query()->truncate();
-//        GlobalSearch::query()->truncate();
-//        ProductFile::query()->truncate();
-//        Slug::query()->where('reference_type', 'Botble\\Ecommerce\\Models\\Product')->delete();
 
         // Import - categorizables
         $this->comment("Importing categorizables..");
@@ -188,7 +185,7 @@ class SyncProducts extends Command
 
 
         $this->output->newLine();
-        $this->output->success('Import terminé.');
+        $this->output->success('Done.');
         return Command::SUCCESS;
     }
 }
