@@ -8,10 +8,12 @@ use Livewire\Component;
 class Card extends Component
 {
     public Product $product;
+    public ?array $stocks;
 
-    public function mount(Product $product)
+    public function mount(Product $product, array $stocks = null)
     {
         $this->product = $product;
+        $this->stocks = $stocks;
     }
 
 

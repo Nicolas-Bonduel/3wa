@@ -1,0 +1,106 @@
+#homepage {
+  width: 100%;
+  background-color: var(--primary-bg-color);
+
+  .banner {
+    width: 100%;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+
+    .banner-mobile {
+      width: 100%;
+      max-width: 500px;
+    }
+    .banner-desktop {
+      display: none;
+      width: 100%;
+      max-width: 1440px;
+    }
+    @media (min-width: 900px) {
+      .banner-mobile {
+        display: none;
+      }
+      .banner-desktop {
+        display: block;
+      }
+    }
+  }
+
+  h1 {
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 1.5rem;
+  }
+  h2 {
+    font-weight: 500;
+    font-size: 1.3rem;
+  }
+
+  .sub-text {
+    margin-top: 1.5rem;
+    color: gray;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .top-sales {
+    background-color: var(--secondary-bg-color);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .products-listing {
+      padding: 0;
+      margin-left: 1rem;
+      margin-right: 1rem;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+
+      .product-card {
+        background-color: var(--primary-bg-color);
+      }
+    }
+  }
+
+  .activities {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 10%;
+
+    @media (min-width: 900px) {
+      padding: 20px 50px;
+
+      .articles-wrapper {
+        display: flex;
+        justify-content: space-evenly;
+
+        article {
+          width: 30%;
+        }
+      }
+    }
+
+    article {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 2rem;
+
+      h2 {
+        margin-top: .75rem;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 1rem;
+      }
+
+      img {
+        border-radius: 15px;
+      }
+
+
+    }
+  }
+
+}

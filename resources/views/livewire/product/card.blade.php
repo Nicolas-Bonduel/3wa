@@ -24,14 +24,16 @@
         {{ htmlspecialchars_decode($product->description) }}
     </span>
 
-{{--    @dump($product->stocks)--}}
+{{--    @dump($product)--}}
+{{--    @dd($stocks)--}}
     @php
-        if (isset($product->stocks['RECOND']) && $product->stocks['RECOND'] > 0) {
-            $stock = $product->stocks['RECOND'];
+        $stocks = $stocks ?? $product->stocks;
+        if (isset($stocks['RECOND']) && $stocks['RECOND'] > 0) {
+            $stock = $stocks['RECOND'];
             $price = $product->variations()->getResults()->first(fn($v) => str_ends_with($v->sku, '_RECOND'))->price;
         }
-        elseif (isset($product->stocks['NEUF']) && $product->stocks['NEUF'] > 0) {
-            $stock = $product->stocks['NEUF'];
+        elseif (isset($stocks['NEUF']) && $stocks['NEUF'] > 0) {
+            $stock = $stocks['NEUF'];
             $price = $product->variations()->getResults()->first(fn($v) => str_ends_with($v->sku, '_NEUF'))->price;
         }
         else {
