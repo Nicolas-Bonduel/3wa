@@ -44,6 +44,14 @@ new #[Layout('layouts.app')] class extends Component
 
     @vite(['resources/css/login.scss'])
 
+
+    <!-- Loader -->
+    <div x-data x-show="$store.navigate.to !== null">
+        <div class="livewire-loader-wrapper">
+            <div class="loader"></div>
+        </div>
+    </div>
+
     <span class="header">
         Connexion
     </span>
@@ -94,8 +102,17 @@ new #[Layout('layouts.app')] class extends Component
             </label>
         </div>
 
-        <button type="submit" class="btn-primary">
+        <button type="submit" class="btn-primary relative">
+
+            <!-- Loader -->
+            <div wire:loading>
+                <div class="livewire-loader-wrapper tiny">
+                    <div class="loader"></div>
+                </div>
+            </div>
+
             {{ __('Se connecter') }}
+
         </button>
 
         <div class="mt-4 flex flex-col items-center">

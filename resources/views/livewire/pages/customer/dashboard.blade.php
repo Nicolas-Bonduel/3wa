@@ -3,6 +3,13 @@
     @vite(['resources/css/dashboard.scss'])
 
 
+    <!-- Loader -->
+    <div x-data x-show="$store.navigate.to !== null">
+        <div class="livewire-loader-wrapper">
+            <div class="loader"></div>
+        </div>
+    </div>
+
     <div class="nav">
         <a href="{{ route('customer.dashboard') }}" wire:navigate>
             <div class="svg-wrapper">
@@ -67,6 +74,7 @@
     </div>
 
     <div class="content">
+
         @if(Route::is('customer.dashboard'))
             Dashboard
         @elseif(Route::is('customer.edit-account'))
@@ -78,6 +86,7 @@
         @elseif(Route::is('customer.change-password'))
             not yet
         @endif
+
     </div>
 
 </div>

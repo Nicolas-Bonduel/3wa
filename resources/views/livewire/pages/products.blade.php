@@ -5,7 +5,12 @@
 
 {{--    {{ $products->total() }}--}}
 
-    <!-- Loader -->
+    <!-- Loaders -->
+    <div x-data x-show="$store.navigate.to !== null">
+        <div class="livewire-loader-wrapper set-height">
+            <div class="loader"></div>
+        </div>
+    </div>
     <div wire:loading>
         <div class="livewire-loader-wrapper fixed">
             <div class="loader"></div>

@@ -29,8 +29,17 @@
 
     </div>
 
-    <button wire:click="add_to_cart" class="add-to-cart btn-primary py-4 {{ ($qty > $remaining_stock || $qty < 1) ? 'disabled' : '' }}">
+    <button wire:click="add_to_cart" class="add-to-cart btn-primary py-4 relative {{ ($qty > $remaining_stock || $qty < 1) ? 'disabled' : '' }}">
+
+        <!-- Loader -->
+        <div wire:loading>
+            <div class="livewire-loader-wrapper small">
+                <div class="loader"></div>
+            </div>
+        </div>
+
         Ajouter au panier
+
     </button>
 
 </div>

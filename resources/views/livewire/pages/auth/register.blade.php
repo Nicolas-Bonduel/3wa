@@ -139,6 +139,14 @@ new #[Layout('layouts.app')] class extends Component
 
     @vite(['resources/css/register.scss'])
 
+
+    <!-- Loader -->
+    <div x-data x-show="$store.navigate.to !== null">
+        <div class="livewire-loader-wrapper set-height">
+            <div class="loader"></div>
+        </div>
+    </div>
+
     <span class="header">
         Créer un compte
     </span>
@@ -322,8 +330,17 @@ new #[Layout('layouts.app')] class extends Component
         </div>
 
         <!-- Register -->
-        <button type="submit" class="btn-primary">
+        <button type="submit" class="btn-primary relative">
+
+            <!-- Loader -->
+            <div wire:loading>
+                <div class="livewire-loader-wrapper tiny">
+                    <div class="loader"></div>
+                </div>
+            </div>
+
             S'inscrire
+
         </button>
 
         <!-- Login -->

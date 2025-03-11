@@ -2,6 +2,7 @@
 
     @vite(['resources/css/cart.scss'])
 
+
     @php
         $variant_extra = [
             'Reconditionné' => [
@@ -15,6 +16,13 @@
         ];
     @endphp
 
+
+    <!-- Loader -->
+    <div x-data x-show="$store.navigate.to !== null">
+        <div class="livewire-loader-wrapper">
+            <div class="loader"></div>
+        </div>
+    </div>
 
     <h1>
         Mon Panier

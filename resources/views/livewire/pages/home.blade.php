@@ -3,6 +3,13 @@
     @vite(['resources/css/homepage.scss', 'resources/css/products.scss'])
 
 
+    <!-- Loader -->
+    <div x-data x-show="$store.navigate.to !== null">
+        <div class="livewire-loader-wrapper set-height">
+            <div class="loader"></div>
+        </div>
+    </div>
+
     <section class="banner">
         <img class="banner-mobile" alt="banner" src="{{ asset('img/banner.webp') }}" />
         <a class="banner-desktop" href="{{ route('public.blog') }}" wire:navigate>
