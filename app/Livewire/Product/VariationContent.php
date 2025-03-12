@@ -48,7 +48,7 @@ class VariationContent extends Component
         // change current variation if out of stock (only on page load)
         if ($this->mounted &&  $product_stocks[$this->product_variation->id] < 1) {
             foreach ($product_variations as $variation) {
-                if ($product_stocks[$variation->id] > 0) {
+                if ($product_stocks[$variation->id] > 0) { // only if another variation actually has stock, otherwise it's pointless
                     $this->product_variation = $variation;
                     break;
                 }

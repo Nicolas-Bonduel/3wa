@@ -15,34 +15,24 @@ use Throwable;
 class CheckSync extends Command
 {
 
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
     protected $signature = 'sync:check {--debug} {--ignore-max-parse}';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
     protected $description = 'Incremental Sync Laravel <--> Dolibarr';
 
     protected const MAX_PARSE = 250;
 
-    /**
-     * Execute the console command.
-     * @throws Throwable
-     */
+
     public function handle()
     {
+
+        /* log (last execution) */
         $run_log = DoliSyncRun::first();
         $now = new \DateTime('now');
         if (! $run_log) {
             $run_log = new DoliSyncRun(['last' => $now, 'is_running' => true]);
         }
         else {
+            // abort if already running
             if ($run_log->is_running) {
                 $this->output->success('An instance is already running. Aborting..');
                 return Command::SUCCESS;
@@ -53,9 +43,11 @@ class CheckSync extends Command
         $run_log->save();
 
 
+        // dolibarr tables
         $dolibarr_product_table = "llx_product";
         $dolibarr_product_extrafields_table = "llx_product_extrafields";
 
+        // buffer tables
         $check_product_table = "doli_product_check";
         $check_product_extrafields_table = "doli_product_extrafields_check";
 
@@ -64,6 +56,7 @@ class CheckSync extends Command
 
         try {
 
+            /* first execution ==> create buffers */
             if (!Schema::connection('dolibarr')->hasTable($check_product_table)) {
                 $this->comment("Buffer tables don't exist, creating...");
 
@@ -657,6 +650,5 @@ class CheckSync extends Command
 
         return $res;
     }
-
 
 }

@@ -34,11 +34,11 @@ class Product extends Model
     {
         $product_variations = $this->variations()->getResults();
         foreach ($product_variations as $product_variation) {
-            if (str_ends_with($product_variation->sku, '_RECOND'))
+            if (str_ends_with($product_variation->sku, '_RECOND')) // default is recond
                 return $product_variation;
         }
 
-        return $product_variations->first();
+        return $product_variations->first(); // if no recond, take any one
     }
     public function variation(int $id): ?ProductVariation
     {

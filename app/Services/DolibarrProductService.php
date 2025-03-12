@@ -14,6 +14,16 @@ use Illuminate\Support\Str;
 class DolibarrProductService
 {
 
+    /**
+     * Returns the list of stocks for all variants of a master product
+     * Looks like this :
+     * [
+     *      'RECOND' => -quantity-,
+     *      'NEUF' => -quantity-
+     * ]
+     * @param \App\Models\Product $product - master product
+     * @return array
+     */
     public static function getProductStocks(\App\Models\Product $product)
     {
 
@@ -40,15 +50,32 @@ class DolibarrProductService
         foreach ($llx_products as $llx_product) {
             $key = substr($llx_product->ref, strlen($product->sku) + 1);
             $virtual_stock = $llx_product->extrafields[0]['stockvirtuel'];
-            if ($virtual_stock !== null)
+            if ($virtual_stock !== null)    // always take the virtual stock when available
                 $return[$key] = intval($virtual_stock);
-            else
+            else                            // if not, take the static stock
                 $return[$key] = intval($llx_stocks->first(fn($s) => $s->fk_product == $llx_product->rowid)?->reel ?? 0);
         }
 
         return $return;
     }
 
+    /**
+     * Returns the list of stocks for all variants of all given master products
+     * Looks like this :
+     * [
+     *      -master product id- => [
+     *          'RECOND' => -quantity-,
+     *          'NEUF' => -quantity-
+     *      ],
+     *      -master product id- => [
+     *          'RECOND' => -quantity-,
+     *          'NEUF' => -quantity-
+     *      ],
+     *      ...
+     * ]
+     * @param $products - collection of master products
+     * @return array
+     */
     public static function getProductsStocks($products): array
     {
 
@@ -73,11 +100,12 @@ class DolibarrProductService
         $stocks = [];
         foreach ($product_variations as $product_variation) {
             $stock =
-                $llx_products->find($product_variation->fk_dolibarr_id)->extrafields[0]['stockvirtuel']
+                $llx_products->find($product_variation->fk_dolibarr_id)->extrafields[0]['stockvirtuel']         // always take the virtual stock when available
                 ??
-                $llx_stocks->first(fn($s) => $s->fk_product == $product_variation->fk_dolibarr_id)?->reel ?? 0
+                $llx_stocks->first(fn($s) => $s->fk_product == $product_variation->fk_dolibarr_id)?->reel ?? 0  // if not, take the static stock
             ;
 
+            // only takes the allowed variations (I know, I'm getting the stock needlessly before knowing if I'll need it, it's late..)
             foreach ($allowed_variations as $allowed_variation) {
                 if (str_ends_with($product_variation->sku, '_' . $allowed_variation))
                     $stocks[$product_variation->parent_id][$allowed_variation] = $stock;

@@ -3,8 +3,6 @@
     @vite(['resources/css/products.scss'])
 
 
-{{--    {{ $products->total() }}--}}
-
     <!-- Loaders -->
     <div x-data x-show="$store.navigate.to !== null">
         <div class="livewire-loader-wrapper set-height">

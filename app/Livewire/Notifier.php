@@ -12,11 +12,15 @@ class Notifier extends Component
     public string $type;
     public bool $show = false;
 
+    /**
+     * Allows displaying notifications after redirection using session
+     * @return void
+     */
     public function mount()
     {
         if (session()->has('notify')) {
-            $this->message = session('notify')[0];
-            $this->type = count(session('notify')) > 1 ? session('notify')[1] : 'info';
+            $this->message = session('notify')[0];                                           // message
+            $this->type = count(session('notify')) > 1 ? session('notify')[1] : 'info'; // type (info by default)
             $this->show = true;
         }
     }

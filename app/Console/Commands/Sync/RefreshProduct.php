@@ -13,22 +13,14 @@ use Illuminate\Console\Command;
 class RefreshProduct extends Command
 {
 
-
     protected $dolibarr_product_rowid = null;
 
 
     protected $signature = 'sync:refresh-product {--rowid=}';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
     protected $description = 'Refreshes a product from Dolibarr';
 
-    /**
-     * Execute the console command.
-     */
+
     public function handle()
     {
 

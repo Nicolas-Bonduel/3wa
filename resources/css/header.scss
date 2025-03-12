@@ -5,12 +5,13 @@
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    padding: 10px 20px;
+    padding: 10px 0;
     background-color: var(--primary-bg-color);
     border-bottom: 1px solid #eee;
     z-index: 999;
     @media (min-width: 900px) {
         margin-left: 1rem;
+        padding: 10px 20px;
     }
 
     #mobile-menu {

@@ -92,7 +92,6 @@ Route::middleware([\App\Http\Middleware\AdminMiddleware::class])->prefix('/admin
 });
 
 /* --- 404 --- */
-
 Route::fallback(\App\Livewire\Error404::class);
 
 

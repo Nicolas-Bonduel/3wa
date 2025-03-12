@@ -7,7 +7,7 @@
 
     <span class="counter">{{ array_reduce($cart_items->toArray(), fn($acc, $i) => $acc + $i['quantity'], 0) }}</span>
 
-    <div class="hover-content" onclick="((e) => e.stopPropagation())(arguments[0])">
+    <div class="hover-content" onclick="((e) => e.stopPropagation())(arguments[0])"> <!-- its parent is also a link so this prevents a click from triggering it -->
         @if ($cart_items->count())
             @foreach($cart_items as $cart_item)
                 @php

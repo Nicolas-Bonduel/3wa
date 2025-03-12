@@ -8,16 +8,17 @@ use Livewire\Component;
 class QuickSearch extends Component
 {
 
-    public string $input = "";
-    public $products = [];
+    public string $input = "";  // input text
+    public $products = [];      // result (products)
 
 
     public function render()
     {
         if ($this->input) {
-            $search_properties = ['name', 'sku', 'description', 'content'];
-            $max_results = 28;
+            $search_properties = ['name', 'sku', 'description', 'content']; // properties to compare
+            $max_results = 28;                                              // max results
 
+            // input cleaning
             $search = str_replace(' ', '', $this->input);
             $search = str_replace('-', '', $search);
             $search = str_replace('_', '', $search);

@@ -94,8 +94,17 @@
             </tbody>
         </table>
 
-        <button class="btn-primary place-order" wire:click="placeOrder">
+        <button class="btn-primary place-order relative" wire:click="placeOrder">
+
+            <!-- Loader -->
+            <div wire:loading>
+                <div class="livewire-loader-wrapper tiny">
+                    <div class="loader"></div>
+                </div>
+            </div>
+
             Passer la commande
+
         </button>
     @endif
 

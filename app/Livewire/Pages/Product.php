@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class Product extends Component
 {
-    public $slug;
+    public $slug; // actually the product name, wanted to implement slugs at some point but I'm a little too lazy for this
 
     public function mount(string $slug)
     {

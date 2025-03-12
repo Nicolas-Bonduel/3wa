@@ -126,7 +126,6 @@ new #[Layout('layouts.app')] class extends Component
             'is_default' => true
         ]));
 
-//        event(new Registered($user = User::create($validated)));
         event(new Registered($new_customer));
 
         Auth::login($new_customer);

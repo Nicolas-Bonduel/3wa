@@ -1,3 +1,7 @@
+/**
+ * Good old toggler for the mobile menu
+ * did this before I implemented livewire, this is a relic of a forsaken era !
+ */
 document.addEventListener('livewire:navigated', () => {
 
     const $menu_mobile_toggle = document.querySelector('#mobile-menu .toggle');

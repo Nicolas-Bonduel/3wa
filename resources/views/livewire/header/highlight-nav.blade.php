@@ -12,6 +12,7 @@
             <ul>
                 @foreach($categories as $cat)
                     @php
+                        // constructs the link to the products page with corresponding filters
                         $subcategories_ids = $cat->subcategories()->getResults()
                             ->pluck('id')
                             ->toArray();

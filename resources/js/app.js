@@ -1,6 +1,9 @@
 import './bootstrap';
 
 
+/** reminder of previously visited url
+ * I only used this to redirect to cart on login, since customer needs to be logged in to purchase
+ */
 let previous_url = null;
 document.addEventListener('livewire:navigate', () => {
     previous_url = window.location.href;
@@ -11,6 +14,10 @@ document.addEventListener('livewire:initialized', () => {
     });
 });
 
+/**
+ * fake links
+ * I shouldn't need this but since I'm an idiot who thought nesting links was a good idea, here I am...
+ */
 document.addEventListener('livewire:navigated', () => {
 
     const onFakeLinkClick = (e) => {
@@ -26,7 +33,9 @@ document.addEventListener('livewire:navigated', () => {
 
 });
 
-
+/**
+ * Allows displaying a loader during navigation
+ */
 Alpine.store('navigate', {
     loading: false,
     to: null

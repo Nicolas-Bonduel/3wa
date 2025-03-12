@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class AdminMiddleware extends Authenticate
 {
+    /* guard for back-office users (User != Customer) */
     public function handle($request, Closure $next, ...$guards): Response
     {
         if (! auth('user')->user()) {

@@ -24,8 +24,6 @@
         {{ htmlspecialchars_decode($product->description) }}
     </span>
 
-{{--    @dump($product)--}}
-{{--    @dd($stocks)--}}
     @php
         $stocks = $stocks ?? $product->stocks;
         if (isset($stocks['RECOND']) && $stocks['RECOND'] > 0) {

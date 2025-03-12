@@ -13,6 +13,11 @@ use App\Facades\Cart as Cart_;
 class Cart extends Component
 {
 
+    /**
+     * Remove product variation from cart
+     * @param $id - product variation id
+     * @return void
+     */
     public function remove($id)
     {
         Cart_::remove($id);
@@ -20,15 +25,21 @@ class Cart extends Component
         $this->dispatch('notify', 'Panier mis à jour', 'success');
     }
 
+    /**
+     * Place order
+     * @return void
+     */
     public function placeOrder()
     {
         try {
+            // sanity check
             $customer = auth('customer')->user();
             if (! $customer) {
                 $this->dispatch('notify', 'Vous devez être connecté pour passer commande', 'info');
                 return;
             }
 
+            // order
             $subtotal = $amount = Cart_::total(true);
             $shipping_amount = 5; $subtotal += $shipping_amount;
             $tax_amount = $subtotal * 0.2;
@@ -43,6 +54,7 @@ class Cart extends Component
                 'fk_dolibarr_order_id' => -1,
             ]);
 
+            // order addresses
             $billing_address = $shipping_address = $customer->addresses[0];
             $new_order_address__billing = OrderAddress::create([
                 'order_id' => $new_order->id,
@@ -63,6 +75,7 @@ class Cart extends Component
                 'city' => $shipping_address->city,
             ]);
 
+            // order products
             $new_order_products = [];
             foreach (Cart_::content() as $cart_item) {
                 $product = $cart_item['product'];
@@ -82,13 +95,17 @@ class Cart extends Component
                 ]);
             }
 
+            // empty cart
             Cart_::clear();
             $this->dispatch('cart-update');
+
+            // redirect with message
             session()->flash('notify', ['Commande passée avec succès', 'success']);
             $this->redirect(route('customer.orders'), navigate: true);
 
         }
         catch (\Throwable $e) {
+            // remove any partial data
             if (isset($new_order_products))
                 foreach ($new_order_products as $new_order_product)
                     $new_order_product->delete();
@@ -99,7 +116,6 @@ class Cart extends Component
             if (isset($new_order))
                 $new_order->delete();
 
-//            dd($e);
             $this->dispatch('notify', 'Une erreur inattendue est survenue', 'error');
         }
     }
@@ -111,7 +127,6 @@ class Cart extends Component
     {
         $cart_items = Cart_::content();
         $total = Cart_::total();
-
 
         return view('livewire.pages.cart', compact('cart_items', 'total'));
     }

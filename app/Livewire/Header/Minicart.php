@@ -9,6 +9,11 @@ use Livewire\Component;
 class Minicart extends Component
 {
 
+    /**
+     * Removes product variation from cart
+     * @param int $id - product variation id
+     * @return void
+     */
     public function remove(int $id)
     {
         Cart::remove($id);
