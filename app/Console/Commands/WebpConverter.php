@@ -28,9 +28,8 @@ class WebpConverter extends Command
                 continue;
 
             $imagePath = storage_path("app/public/{$file}");
-            if (! str_ends_with($imagePath, '_1.jpg') && ! str_ends_with($imagePath, '_1.jpeg') && ! str_ends_with($imagePath, '_1.png'))
-                continue;
-
+//            if (! str_ends_with($imagePath, '_1.jpg') && ! str_ends_with($imagePath, '_1.jpeg') && ! str_ends_with($imagePath, '_1.png'))
+//                continue;
             $explode = explode('.', $imagePath);
             array_pop($explode);
             $without_extension = implode('.', $explode);
