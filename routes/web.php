@@ -88,6 +88,14 @@ Route::middleware([\App\Http\Middleware\AdminMiddleware::class])->prefix('/admin
 
     Route::get('/users', \App\Livewire\Admin\Users::class)
         ->name('users');
+    Route::get('/users2', \App\Livewire\Admin\Users2::class)
+        ->name('users2');
+    Route::post('/users2/edit-role', [\App\Livewire\Admin\Users2::class, 'editRole'])
+        ->name('users2.edit-role');
+    Route::post('/users2/log-into', [\App\Livewire\Admin\Users2::class, 'logInto'])
+        ->name('users2.log-into');
+    Route::post('/users2/delete-user', [\App\Livewire\Admin\Users2::class, 'deleteUser'])
+        ->name('users2.delete-user');
 
 });
 

@@ -19,6 +19,9 @@
 
     <div class="result visible">
         @if (! is_null($products))
+            <div class="flex justify-center py-2" style="color: #777777aa;">
+                {{ count($products) }} résultat{{ count($products) > 1 ? "s" : "" }} {!! count($products) == $max_results ? " <small style='padding: 0 .25rem;'>(max)</small>" : "" !!} parmi {{ $total_products }}
+            </div>
             @forelse($products as $product)
                 @if (! $product->default_variation())
                     @continue

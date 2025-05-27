@@ -10,13 +10,15 @@ class QuickSearch extends Component
 
     public string $input = "";  // input text
     public $products = [];      // result (products)
+    public int $max_results = 28; // max results
 
 
     public function render()
     {
+        $total_products = Product::count();
+
         if ($this->input) {
             $search_properties = ['name', 'sku', 'description', 'content']; // properties to compare
-            $max_results = 28;                                              // max results
 
             // input cleaning
             $search = str_replace(' ', '', $this->input);
@@ -45,12 +47,12 @@ class QuickSearch extends Component
                 $has_where = true;
             }
 
-            $this->products = $query->limit($max_results)->get();
+            $this->products = $query->limit($this->max_results)->get();
         }
         else
             $this->products = null;
 
 
-        return view('livewire.header.quick-search');
+        return view('livewire.header.quick-search', compact('total_products'));
     }
 }
