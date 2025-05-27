@@ -5,6 +5,7 @@
 
     @php
         $product_images = \Illuminate\Support\Facades\Storage::disk('public')->files('produit/' . $product . '/'); // '$product' is actually the product name, too lazy to change it
+        $product_images = array_filter($product_images, fn($i) => str_ends_with($i, '.webp'));
     @endphp
 
 
