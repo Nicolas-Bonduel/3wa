@@ -1,8 +1,8 @@
 <a class="product-card" href="{{ route('public.product', $product->name) }}" wire:navigate>
 
     @php
-        $img_src = \Illuminate\Support\Facades\Storage::disk('public')->path('produit/' . $product->name . '/' . $product->name . '_1.jpg');
-        $rel_path = 'produit/' . $product->name . '/' . $product->name . '_1.jpg';
+        $img_src = \Illuminate\Support\Facades\Storage::disk('public')->path('produit/' . $product->name . '/' . $product->name . '_1.webp');
+        $rel_path = 'produit/' . $product->name . '/' . $product->name . '_1.webp';
     @endphp
 
     <img class="thumbnail" alt="{{ $product->name }}"
